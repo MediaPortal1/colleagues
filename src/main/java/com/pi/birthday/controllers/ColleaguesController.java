@@ -1,23 +1,22 @@
-package com.pi.birthday;
+package com.pi.birthday.controllers;
 
+import com.pi.birthday.repository.ColleagueRepository;
+import com.pi.birthday.tables.Colleague;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
-
-public class RESTController {
+@RequestMapping("/colleagues")
+public class ColleaguesController {
 
     @Autowired
     ColleagueRepository colleagueRepository;
 
-    @GetMapping("/getAll")
+    @GetMapping("/get")
     public List<Colleague> getAllColleagueList() {
         return colleagueRepository.findAll();
     }
@@ -33,18 +32,18 @@ public class RESTController {
         return "Success";
     }
 
-    @GetMapping("/get")
-    public Colleague getColleagueById(String id) {
+    @GetMapping("/{id}/get")
+    public Colleague getColleagueById(@PathVariable String id) {
         return colleagueRepository.findById(Integer.parseInt(id)).get();
     }
 
-    @DeleteMapping("/delete")
-    public boolean fireColleagueById(String id) {
+    @DeleteMapping("/{id}/delete")
+    public boolean fireColleagueById(@PathVariable String id) {
         colleagueRepository.deleteById(Integer.parseInt(id));
         return true;
     }
 
-    @DeleteMapping("/deleteAll")
+    @DeleteMapping("/delete")
     public boolean fireAllColleague() {
         colleagueRepository.deleteAll();
         return true;
