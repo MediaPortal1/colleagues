@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BirthdayApplication {
+public class ColleaguesApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BirthdayApplication.class, args);
+		SpringApplication.run(ColleaguesApp.class, args);
 	}
-
 }

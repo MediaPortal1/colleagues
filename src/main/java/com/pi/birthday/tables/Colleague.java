@@ -1,6 +1,8 @@
 package com.pi.birthday.tables;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -29,8 +31,8 @@ public class Colleague {
         this.id = id;
     }
 
-    public long getDate() {
-        return date;
+    public String getDate() {
+        return new SimpleDateFormat("dd.MM.yyyy").format(new Date(date));
     }
 
     public void setDate(long date) {
